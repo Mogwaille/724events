@@ -8,7 +8,7 @@ const Slider = () => {
   const { data } = useData();
   const [index, setIndex] = useState(0);
   const byDateDesc = data?.focus?.sort((evtA, evtB) =>
-    new Date(evtA.date) < new Date(evtB.date) ? -1 : 1
+    new Date(evtA.date) > new Date(evtB.date) ? -1 : 1
   );
 
   const nextCard = () => {
@@ -25,7 +25,7 @@ const Slider = () => {
   }, [index, byDateDesc?.length]);
 
   if (!byDateDesc || byDateDesc.length === 0) {
-    return <div className="SlideCardList">Pas d'images</div>;
+    return <div className="SlideCardList">Aucune image disponible</div>;
   }
 
   return (
