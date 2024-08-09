@@ -8,13 +8,13 @@ const Slider = () => {
   const { data } = useData();
   const [index, setIndex] = useState(0);
   const byDateDesc = data?.focus?.sort((evtA, evtB) =>
-    new Date(evtA.date) > new Date(evtB.date) ? -1 : 1
+    new Date(evtA.date) > new Date(evtB.date) ? -1 : 1 // > à la place de < pour plus récent au plus ancien
   );
 
   const nextCard = () => {
-    if (byDateDesc && byDateDesc.length > 0) {
+    if (byDateDesc && byDateDesc.length > 0) { // Vérifie que le tableau est défini avant d'éxécuter l'algorythme
       setTimeout(
-        () => setIndex((prevIndex) => (prevIndex + 1) % byDateDesc.length),
+        () => setIndex((prevIndex) => (prevIndex + 1) % byDateDesc.length), // Index incrémenté de 1 pour passer à la prochaine slide, modulo pour boucler
         5000
       );
     }
